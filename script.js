@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       case 10: msg = "Click Flask to move to Water Bath."; break;
       case 11: msg = "Set Temp 50°C, Timer 3-4m, then Start."; break;
       case 12: msg = "Click 'Next' (Bottom Right) to proceed"; break;
-      case 13: msg = "Click Pipette to add Phlagja."; break;
+      case 13: msg = "Click Pipette to add Phenolphthalein."; break;
       case 14: msg = "Click Pipette to add drops."; break;
       case 15: msg = "Drops added. Click Pipette to move it aside."; break;
       case 16: msg = "Click 'Next' (Bottom Right) to proceed."; break;
@@ -449,6 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Move Flask Back to Table
     await wait(3000);
+    butterMelted.src="./images/flaskButterWaterBath.png";
     flask.style.top = "-10%";
     await wait(1000);
     flask.style.left = "40%";
@@ -542,7 +543,7 @@ document.addEventListener("DOMContentLoaded", () => {
       dropCount++;
       if (dropCount >= 2) {
         console.log("Two drops added. Moving to next step.");
-        next4.style.display="block";
+    
         experimentStep = 15;
         updateInstruction(15);
       }
@@ -552,6 +553,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- STEP 15: Move Pipette Away ---
     else if (experimentStep === 15) {
       experimentStep = -1;
+          next4.style.display="block";
       pipette.style.top = "72%";
       pipette.style.left = "21%";
       pipette.style.transform = "rotate(90deg)";
@@ -686,6 +688,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } 
     else if (step === "12") {
       if (experimentStep !== 12) return;
+
       next3.style.display="none";
       waterBath.style.display="none"
       butterSlice.style.display="none"
@@ -699,6 +702,8 @@ document.addEventListener("DOMContentLoaded", () => {
     else if (step === "nextButton4") {
       // Direct testing enabled as per your Step 17 requirement
       experimentStep = -1;
+      pipetteDiEthylEther.style.display="none";
+      pipette.style.display="none";
       next4.style.display="none";
       weightingMachine.style.display="none";
       stand.style.display = "block";
